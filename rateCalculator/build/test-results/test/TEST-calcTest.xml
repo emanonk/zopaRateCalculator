@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="calcTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-02-09T20:03:09" hostname="MC02QXC2MG8WN" time="0.01">
+  <properties/>
+  <testcase name="test" classname="calcTest" time="0.007"/>
+  <testcase name="rateTesting" classname="calcTest" time="0.003"/>
+  <system-out><![CDATA[Monthly Payment: £14.80
+Monthly Payment: £1.86
+Monthly Payment: £14.22
+total:30.878946274344358
+0.00.0
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
