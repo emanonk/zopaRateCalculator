@@ -14,7 +14,7 @@ class LoanAmountValidationServiceImplSpec extends Specification {
         loanAmountValidationService = new LoanAmountValidationServiceImpl()
     }
 
-    @Unroll("No validation error when the requested loan amount is the #scenario allowed")
+    @Unroll("No validation error when the requested loan amount is the #scenario allowed Req[11,12]")
     def "No validation error when the requested loan amount is valid"() {
         when: "the validation service is called"
         loanAmountValidationService.convertAndValidateRequestedAmount(amount)
@@ -28,7 +28,7 @@ class LoanAmountValidationServiceImplSpec extends Specification {
         'maximum' | "15000"
     }
 
-    @Unroll("Validation service throws an error when the requested amount #scenario")
+    @Unroll("Validation service throws an error when the requested amount #scenario Req[10,11,12]")
     def "Validation service checks if the amount is valid"() {
 
         when: "the validation service is called"

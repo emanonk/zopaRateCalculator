@@ -20,3 +20,10 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-csv', version: '1.4'
 
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'zopa.calculator.RateCalculatorRunner'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}

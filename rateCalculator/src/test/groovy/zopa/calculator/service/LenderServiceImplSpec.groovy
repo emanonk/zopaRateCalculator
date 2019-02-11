@@ -24,7 +24,7 @@ class LenderServiceImplSpec extends Specification {
     }
 
 
-    def "Lender service returns the lenders with the lowest rates successfully"() {
+    def "Lender service returns the lenders with the lowest rates successfully Req[03]"() {
         given: "a list of Lenders and a requested amount for a loan quote"
 
         when: "the lenders service is called to find the lowest rates"
@@ -46,7 +46,7 @@ class LenderServiceImplSpec extends Specification {
     }
 
     def "Not enough available "() {
-        given: "a list of Lenders and a requested amount that all the lenders cannot cover"
+        given: "a list of Lenders and a requested amount that all the lenders cannot cover Req[13]"
 
         when: "the lenders service is called to find the lowest rates"
         lenderService.findLendersWithLowestRates(LENDERS, new BigDecimal("14000"))

@@ -20,7 +20,7 @@ class LendersCsvReaderServiceImplSpec extends Specification {
         csvReaderService = new LendersCsvReaderServiceImpl()
     }
 
-    def "Csv reader file service must read the file successfully"() {
+    def "Csv reader file service must read the file successfully Req[02]"() {
         given: "a csv file that contains lenders data"
         String locationOfFile = getClass().getResource(EXAMPLE_LENDERS_FILE).path
 

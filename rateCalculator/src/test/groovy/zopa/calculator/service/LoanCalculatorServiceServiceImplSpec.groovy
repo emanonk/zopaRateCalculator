@@ -3,11 +3,7 @@ package zopa.calculator.service
 import spock.lang.Specification
 import zopa.calculator.domain.Lender
 import zopa.calculator.domain.Quote
-import zopa.calculator.error.RequestedAmountError
-import zopa.calculator.exception.RequestedAmountException
-import zopa.calculator.service.api.LenderService
 import zopa.calculator.service.api.LoanCalculatorService
-import zopa.calculator.service.impl.LenderServiceImpl
 import zopa.calculator.service.impl.LoanCalculatorServiceImpl
 
 class LoanCalculatorServiceServiceImplSpec extends Specification {
@@ -25,45 +21,36 @@ class LoanCalculatorServiceServiceImplSpec extends Specification {
     }
 
 
-    def "Lender service returns the lenders with the lowest rates successfully"() {
+    def "Monthly payment is calculated and returned successfully"() {
         given: "a list of Lenders and a requested amount for a loan quote"
 
-        when: "the lenders service is called to find the lowest rates"
+        when: "the calculate monthly payment service is called"
         def monthlyPayment = loanCalculatorService.calculateMonthlyPayment(QUOTE)
 
-
-        then: "a list of lenders with the lowest rates is returned"
+        then: "the monthly payment amount is returned"
         monthlyPayment == new BigDecimal("30.78")
 
     }
 
-    def "Total repayment " () {
-        //TODO details
-        given: "a list of Lenders and a requested amount for a loan quote"
-        QUOTE.setMonthlyRepayment(new BigDecimal("30.78"))
+    def "Total repayment is calculated and returned successfully" () {
+        given: "the monthly payment has been calculated"
+        QUOTE.setMonthlyPayment(new BigDecimal("30.78"))
 
-        when: "the lenders service is called to find the lowest rates"
+        when: "the calculate total repayment service is called"
         def total = loanCalculatorService.calculateTotalRepayment(QUOTE)
 
-
-        then: "a list of lenders with the lowest rates is returned"
+        then: "the total repayment amount is returned"
         total == new BigDecimal("1108.04")
-
     }
 
-    def "total rate"() {
-        //TODO details
+    def "Total rate is calculated and returned successfully"() {
         given: "a list of Lenders and a requested amount for a loan quote"
-        QUOTE.setMonthlyRepayment(new BigDecimal("30.78"))
-        QUOTE.setTotalRepayment(new BigDecimal("1108.04"))
 
-        when: "the lenders service is called to find the lowest rates"
+        when: "the calculate final total rate service is called"
         def total = loanCalculatorService.calculateTotalRate(QUOTE)
 
-
-        then: "a list of lenders with the lowest rates is returned"
+        then: "the total final rate is returned"
         total == new BigDecimal("0.07")
-
     }
 
 

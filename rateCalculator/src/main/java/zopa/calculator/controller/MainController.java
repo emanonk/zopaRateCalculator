@@ -23,6 +23,9 @@ public class MainController {
     private LenderService lenderService;
     private LoanCalculatorService loanCalculatorService;
 
+    public MainController() {
+    }
+
     public MainController(String[] args) {
         this.lendersDataFilePath = args[0];
         this.requestedAmountStr = args[1];
@@ -32,7 +35,7 @@ public class MainController {
         this.loanCalculatorService = new LoanCalculatorServiceImpl();
     }
 
-    public void execute() {
+    public Quote execute() {
 
         BigDecimal requestedAmount = loanAmountValidationService.convertAndValidateRequestedAmount(requestedAmountStr);
 
@@ -42,18 +45,12 @@ public class MainController {
 
         Quote quote = new Quote(requestedAmount, lendersWithLowestRates);
 
-        quote.setMonthlyRepayment(loanCalculatorService.calculateMonthlyPayment(quote));
+        quote.setMonthlyPayment(loanCalculatorService.calculateMonthlyPayment(quote));
 
         quote.setTotalRepayment(loanCalculatorService.calculateTotalRepayment(quote));
 
         quote.setRate(loanCalculatorService.calculateTotalRate(quote));
 
-        System.out.println(quote.toString());
-
-
-
+        return quote;
     }
-
-
-
 }
