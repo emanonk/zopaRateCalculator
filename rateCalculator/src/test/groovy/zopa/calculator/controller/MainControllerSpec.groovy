@@ -1,8 +1,6 @@
 package zopa.calculator.controller
 
 import spock.lang.Specification
-import spock.lang.Unroll
-import zopa.calculator.RateCalculatorRunner
 import zopa.calculator.domain.Lender
 import zopa.calculator.domain.Quote
 import zopa.calculator.error.RequestedAmountError
