@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="zopa.calculator.service.LendersCsvReaderServiceImplSpec" tests="4" skipped="0" failures="0" errors="0" timestamp="2019-02-23T11:49:34" hostname="MC02QXC2MG8WN" time="0.03">
+  <properties/>
+  <testcase name="Csv reader file service must read the file successfully Req[02]" classname="zopa.calculator.service.LendersCsvReaderServiceImplSpec" time="0.021"/>
+  <testcase name="Csv reader file service must throw and exception when the file does not exist" classname="zopa.calculator.service.LendersCsvReaderServiceImplSpec" time="0.005"/>
+  <testcase name="Csv reader file service must throw and exception when the file contains invalid data" classname="zopa.calculator.service.LendersCsvReaderServiceImplSpec" time="0.001"/>
+  <testcase name="Csv reader file service must throw and exception when the file is corrupted" classname="zopa.calculator.service.LendersCsvReaderServiceImplSpec" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

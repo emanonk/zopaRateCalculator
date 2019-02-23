@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="zopa.calculator.controller.MainControllerSpec" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-02-23T11:49:34" hostname="MC02QXC2MG8WN" time="0.061">
+  <properties/>
+  <testcase name="The application runs successfully Req[04,05,06,07,08,09]" classname="zopa.calculator.controller.MainControllerSpec" time="0.039"/>
+  <testcase name="There is not enough capital to provide a quote Req[13]" classname="zopa.calculator.controller.MainControllerSpec" time="0.022"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
