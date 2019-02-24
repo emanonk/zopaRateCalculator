@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="zopa.calculator.service.LenderServiceImplSpec" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-02-23T11:49:34" hostname="MC02QXC2MG8WN" time="0.006">
+<testsuite name="zopa.calculator.service.LenderServiceImplSpec" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-02-24T20:37:15" hostname="MC02QXC2MG8WN" time="0.008">
   <properties/>
-  <testcase name="Lender service returns the lenders with the lowest rates successfully Req[03]" classname="zopa.calculator.service.LenderServiceImplSpec" time="0.005"/>
+  <testcase name="Lender service returns the lenders with the lowest rates successfully Req[03]" classname="zopa.calculator.service.LenderServiceImplSpec" time="0.007"/>
   <testcase name="Not enough available " classname="zopa.calculator.service.LenderServiceImplSpec" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

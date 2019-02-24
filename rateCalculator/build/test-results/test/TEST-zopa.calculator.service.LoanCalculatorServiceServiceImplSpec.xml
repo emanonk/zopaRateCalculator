@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" tests="3" skipped="0" failures="2" errors="0" timestamp="2019-02-23T11:49:34" hostname="MC02QXC2MG8WN" time="0.08">
+<testsuite name="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" tests="3" skipped="0" failures="3" errors="0" timestamp="2019-02-24T20:37:15" hostname="MC02QXC2MG8WN" time="0.008">
   <properties/>
-  <testcase name="Monthly payment is calculated and returned successfully" classname="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" time="0.073">
-    <failure message="Condition not satisfied:&#10;&#10;monthlyPayment == new BigDecimal(&quot;30.78&quot;)&#10;|              |  |&#10;30.86          |  30.78&#10;               false&#10;" type="org.spockframework.runtime.SpockComparisonFailure">Condition not satisfied:
-
-monthlyPayment == new BigDecimal(&quot;30.78&quot;)
-|              |  |
-30.86          |  30.78
-               false
-
-	at zopa.calculator.service.LoanCalculatorServiceServiceImplSpec.Monthly payment is calculated and returned successfully(LoanCalculatorServiceServiceImplSpec.groovy:31)
+  <testcase name="Monthly payment is calculated and returned successfully" classname="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" time="0.006">
+    <failure message="groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)" type="groovy.lang.GroovyRuntimeException">groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)
+	at zopa.calculator.service.LoanCalculatorServiceServiceImplSpec.$spock_initializeFields(LoanCalculatorServiceServiceImplSpec.groovy:17)
 </failure>
   </testcase>
-  <testcase name="Total repayment is calculated and returned successfully" classname="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" time="0.005">
-    <failure message="Condition not satisfied:&#10;&#10;total == new BigDecimal(&quot;1108.04&quot;)&#10;|     |  |&#10;|     |  1108.04&#10;|     false&#10;1108.08&#10;" type="org.spockframework.runtime.SpockComparisonFailure">Condition not satisfied:
-
-total == new BigDecimal(&quot;1108.04&quot;)
-|     |  |
-|     |  1108.04
-|     false
-1108.08
-
-	at zopa.calculator.service.LoanCalculatorServiceServiceImplSpec.Total repayment is calculated and returned successfully(LoanCalculatorServiceServiceImplSpec.groovy:43)
+  <testcase name="Total repayment is calculated and returned successfully" classname="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" time="0.001">
+    <failure message="groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)" type="groovy.lang.GroovyRuntimeException">groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)
+	at zopa.calculator.service.LoanCalculatorServiceServiceImplSpec.$spock_initializeFields(LoanCalculatorServiceServiceImplSpec.groovy:17)
 </failure>
   </testcase>
-  <testcase name="Total rate is calculated and returned successfully" classname="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" time="0.002"/>
+  <testcase name="Total rate is calculated and returned successfully" classname="zopa.calculator.service.LoanCalculatorServiceServiceImplSpec" time="0.0">
+    <failure message="groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)" type="groovy.lang.GroovyRuntimeException">groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)
+	at zopa.calculator.service.LoanCalculatorServiceServiceImplSpec.$spock_initializeFields(LoanCalculatorServiceServiceImplSpec.groovy:17)
+</failure>
+  </testcase>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

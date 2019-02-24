@@ -12,34 +12,54 @@ public class Quote {
     private BigDecimal monthlyPayment;
     private BigDecimal totalRepayment;
 
-    public Quote(BigDecimal requestedAmount, List<Lender> lenders) {
+    public Quote() {
+    }
+
+    public BigDecimal getRequestedAmount() {
+        return requestedAmount;
+    }
+
+    public void setRequestedAmount(BigDecimal requestedAmount) {
         this.requestedAmount = requestedAmount;
-        this.lenders = lenders;
     }
 
     public List<Lender> getLenders() {
         return lenders;
     }
 
+    public void setLenders(List<Lender> lenders) {
+        this.lenders = lenders;
+    }
+
+    public BigDecimal getRate() {
+        return rate;
+    }
+
     public void setRate(BigDecimal rate) {
         this.rate = rate;
-    }
-
-    public void setMonthlyPayment(BigDecimal monthlyPayment) {
-        this.monthlyPayment = monthlyPayment;
-    }
-
-    public void setTotalRepayment(BigDecimal totalRepayment) {
-        this.totalRepayment = totalRepayment;
     }
 
     public BigDecimal getMonthlyPayment() {
         return monthlyPayment;
     }
 
+    public void setMonthlyPayment(BigDecimal monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
+    }
+
+    public BigDecimal getTotalRepayment() {
+        return totalRepayment;
+    }
+
+    public void setTotalRepayment(BigDecimal totalRepayment) {
+        this.totalRepayment = totalRepayment;
+    }
+
     private String printRate(){
         return rate.multiply(BigDecimal.valueOf(100)).setScale(1, RoundingMode.HALF_UP).toString();
     }
+
+
 
     @Override
     public String toString() {
@@ -48,4 +68,6 @@ public class Quote {
                 "Monthly repayment: £" + monthlyPayment + "\n" +
                 "Total repayment: £" + totalRepayment;
     }
+
+
 }

@@ -1,15 +1,17 @@
 package zopa.calculator.service.api;
 
+import zopa.calculator.domain.Lender;
 import zopa.calculator.domain.Quote;
 import java.math.BigDecimal;
+import java.util.List;
 
 public interface LoanCalculatorService {
 
-    BigDecimal calculateMonthlyPayment(Quote quote);
+    BigDecimal calculateMonthlyPayment(List<Lender> lenders);
 
-    BigDecimal calculateTotalRepayment(Quote quote);
+    BigDecimal calculateTotalRepayment(BigDecimal monthlyPayment);
 
-    BigDecimal calculateTotalRate(Quote quote);
+    BigDecimal calculateTotalRate(List<Lender> lenders);
 
 
 }

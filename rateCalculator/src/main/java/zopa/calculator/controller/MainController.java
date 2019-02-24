@@ -2,6 +2,8 @@ package zopa.calculator.controller;
 
 import zopa.calculator.domain.Lender;
 import zopa.calculator.domain.Quote;
+import zopa.calculator.utilities.QuoteBuilder;
+import zopa.calculator.exception.ApplicationException;
 import zopa.calculator.service.api.LenderService;
 import zopa.calculator.service.api.LendersCsvReaderService;
 import zopa.calculator.service.api.LoanAmountValidationService;
@@ -16,6 +18,7 @@ import java.util.List;
 
 public class MainController {
 
+    private static final int NUMBER_OF_ARGUMENTS = 2;
     private String lendersDataFilePath;
     private String requestedAmountStr;
     private LendersCsvReaderService lendersCsvReaderService;
@@ -24,33 +27,56 @@ public class MainController {
     private LoanCalculatorService loanCalculatorService;
 
     public MainController() {
-    }
-
-    public MainController(String[] args) {
-        this.lendersDataFilePath = args[0];
-        this.requestedAmountStr = args[1];
         this.lendersCsvReaderService = new LendersCsvReaderServiceImpl();
         this.loanAmountValidationService = new LoanAmountValidationServiceImpl();
         this.lenderService = new LenderServiceImpl();
         this.loanCalculatorService = new LoanCalculatorServiceImpl();
     }
 
-    public Quote execute() {
+    public String execute(String[] args) {
+
+        validateCommandLineArgs(args);
+        readAndAssignArguments(args);
 
         BigDecimal requestedAmount = loanAmountValidationService.convertAndValidateRequestedAmount(requestedAmountStr);
 
         List<Lender> lenders = lendersCsvReaderService.loadLendersDataFromFile(lendersDataFilePath);
 
-        List<Lender> lendersWithLowestRates = lenderService.findLendersWithLowestRates(lenders, requestedAmount);
+        List<Lender> lendersWithLowestRates;
 
-        Quote quote = new Quote(requestedAmount, lendersWithLowestRates);
+        try {
+            lendersWithLowestRates = lenderService.findLendersWithLowestRates(lenders, requestedAmount);
+        } catch (ApplicationException e) {
+            return e.getMessage();
+        }
 
-        quote.setMonthlyPayment(loanCalculatorService.calculateMonthlyPayment(quote));
+        BigDecimal monthlyPayment = loanCalculatorService.calculateMonthlyPayment(lendersWithLowestRates);
 
-        quote.setTotalRepayment(loanCalculatorService.calculateTotalRepayment(quote));
+        BigDecimal totalRepayment = loanCalculatorService.calculateTotalRepayment(monthlyPayment);
 
-        quote.setRate(loanCalculatorService.calculateTotalRate(quote));
+        BigDecimal totalRate = loanCalculatorService.calculateTotalRate(lendersWithLowestRates);
 
-        return quote;
+        Quote quote = new QuoteBuilder()
+                .withRequestedAmount(requestedAmount)
+                .withLenders(lendersWithLowestRates)
+                .withMonthlyPayment(monthlyPayment)
+                .withTotalRepayment(totalRepayment)
+                .withRate(totalRate)
+                .build();
+
+        return quote.toString();
+
+    }
+
+
+    private void validateCommandLineArgs(String[] args) {
+        if (args.length != NUMBER_OF_ARGUMENTS) {
+            throw new RuntimeException("Invalid numbers of arguments, please pass the Lander's data file path and the requested amount");
+        }
+    }
+
+    private void readAndAssignArguments(String[] args) {
+        this.lendersDataFilePath = args[0];
+        this.requestedAmountStr = args[1];
     }
 }

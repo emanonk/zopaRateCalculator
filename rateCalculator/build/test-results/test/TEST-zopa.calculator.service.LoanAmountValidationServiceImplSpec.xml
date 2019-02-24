@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="zopa.calculator.service.LoanAmountValidationServiceImplSpec" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-02-23T11:49:34" hostname="MC02QXC2MG8WN" time="0.006">
+<testsuite name="zopa.calculator.service.LoanAmountValidationServiceImplSpec" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-02-24T20:37:15" hostname="MC02QXC2MG8WN" time="0.008">
   <properties/>
   <testcase name="No validation error when the requested loan amount is the minimum allowed Req[11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.003"/>
-  <testcase name="No validation error when the requested loan amount is the maximum allowed Req[11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.0"/>
-  <testcase name="Validation service throws an error when the requested amount is more that 15000 Req[10,11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.0"/>
-  <testcase name="Validation service throws an error when the requested amount is less that 1000 Req[10,11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.0"/>
+  <testcase name="No validation error when the requested loan amount is the maximum allowed Req[11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.001"/>
+  <testcase name="Validation service throws an error when the requested amount is more that 15000 Req[10,11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.002"/>
+  <testcase name="Validation service throws an error when the requested amount is less that 1000 Req[10,11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.001"/>
   <testcase name="Validation service throws an error when the requested amount contains alphabet characters Req[10,11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.0"/>
   <testcase name="Validation service throws an error when the requested amount is not rounded to the nearest hundred Req[10,11,12]" classname="zopa.calculator.service.LoanAmountValidationServiceImplSpec" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

@@ -172,7 +172,7 @@ div.footer {
 <hr></hr>
 <div class='summary-report'>
 <h3>Summary:</h3>
-<div class='date-test-ran'>Created on Sat Feb 23 11:49:34 GMT 2019 by manoskammas</div>
+<div class='date-test-ran'>Created on Sun Feb 24 20:37:15 GMT 2019 by manoskammas</div>
 <table class='summary-table'>
 <thead>
 <th>Executed features</th>
@@ -185,11 +185,11 @@ div.footer {
 <tbody>
 <tr>
 <td>3</td>
-<td>2</td>
 <td>0</td>
+<td>3</td>
 <td>0</td>
-<td>33.33%</td>
-<td>0.081 seconds</td>
+<td>0.0%</td>
+<td>0.009 seconds</td>
 </tr>
 </tbody>
 </table>
@@ -203,18 +203,18 @@ div.footer {
 <tbody>
 <ul id='toc'>
 <li>
-<a href='#-1534857770' class='feature-toc-failure'>Monthly payment is calculated and returned successfully</a>
+<a href='#-1534857770' class='feature-toc-error'>Monthly payment is calculated and returned successfully</a>
 </li>
 <li>
-<a href='#-1798797446' class='feature-toc-failure'>Total repayment is calculated and returned successfully</a>
+<a href='#-1798797446' class='feature-toc-error'>Total repayment is calculated and returned successfully</a>
 </li>
 <li>
-<a href='#-835067809' class='feature-toc-pass'>Total rate is calculated and returned successfully</a>
+<a href='#-835067809' class='feature-toc-error'>Total rate is calculated and returned successfully</a>
 </li>
 </ul>
 <tr>
 <td colspan='10'>
-<div class='feature-description failure' id='-1534857770'>
+<div class='feature-description error' id='-1534857770'>
 <span>Monthly payment is calculated and returned successfully</span>
 <span style='float: right; font-size: 60%;'>
 <a href='#toc'>Return</a>
@@ -253,7 +253,7 @@ div.footer {
 <div class='problem-list'>
 <ul>
 <li>
-<pre>Condition not satisfied:<br/><br/>monthlyPayment == new BigDecimal(&quot;30.78&quot;)<br/>|              |  |<br/>30.86          |  30.78<br/>               false<br/></pre>
+<pre>groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)</pre>
 </li>
 </ul>
 </div>
@@ -262,7 +262,7 @@ div.footer {
 </tr>
 <tr>
 <td colspan='10'>
-<div class='feature-description failure' id='-1798797446'>
+<div class='feature-description error' id='-1798797446'>
 <span>Total repayment is calculated and returned successfully</span>
 <span style='float: right; font-size: 60%;'>
 <a href='#toc'>Return</a>
@@ -301,7 +301,7 @@ div.footer {
 <div class='problem-list'>
 <ul>
 <li>
-<pre>Condition not satisfied:<br/><br/>total == new BigDecimal(&quot;1108.04&quot;)<br/>|     |  |<br/>|     |  1108.04<br/>|     false<br/>1108.08<br/></pre>
+<pre>groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)</pre>
 </li>
 </ul>
 </div>
@@ -310,7 +310,7 @@ div.footer {
 </tr>
 <tr>
 <td colspan='10'>
-<div class='feature-description' id='-835067809'>
+<div class='feature-description error' id='-835067809'>
 <span>Total rate is calculated and returned successfully</span>
 <span style='float: right; font-size: 60%;'>
 <a href='#toc'>Return</a>
@@ -340,6 +340,20 @@ div.footer {
 </td>
 <td>
 <div class='block-text'>the total final rate is returned</div>
+</td>
+</tr>
+<tr>
+<td colspan='10'>
+<div class='problem-description'>
+<div class='problem-header'>The following problems occurred:</div>
+<div class='problem-list'>
+<ul>
+<li>
+<pre>groovy.lang.GroovyRuntimeException: Could not find matching constructor for: zopa.calculator.domain.Quote(BigDecimal, ArrayList)</pre>
+</li>
+</ul>
+</div>
+</div>
 </td>
 </tr>
 </tbody>

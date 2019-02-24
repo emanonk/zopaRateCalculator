@@ -1,12 +1,11 @@
 package zopa.calculator.service.impl;
 
 import zopa.calculator.domain.Lender;
-import zopa.calculator.domain.Quote;
 import zopa.calculator.service.api.LoanCalculatorService;
-
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.List;
 import java.util.Optional;
 
 public class LoanCalculatorServiceImpl implements LoanCalculatorService {
@@ -17,9 +16,9 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
     }
 
     @Override
-    public BigDecimal calculateMonthlyPayment(Quote quote) {
+    public BigDecimal calculateMonthlyPayment(List<Lender> lenders) {
 
-        Optional<BigDecimal> reduce = quote.getLenders().stream().map(this::calculateMonthlyPaymentByLender).reduce(BigDecimal::add);
+        Optional<BigDecimal> reduce = lenders.stream().map(this::calculateMonthlyPaymentByLender).reduce(BigDecimal::add);
 
         return reduce.orElseThrow(RuntimeException::new);
     }
@@ -45,14 +44,14 @@ public class LoanCalculatorServiceImpl implements LoanCalculatorService {
     }
 
     @Override
-    public BigDecimal calculateTotalRepayment(Quote quote) {
-        return quote.getMonthlyPayment().multiply(BigDecimal.valueOf(36));
+    public BigDecimal calculateTotalRepayment(BigDecimal monthlyPayment) {
+        return monthlyPayment.multiply(BigDecimal.valueOf(36));
     }
 
     @Override
-    public BigDecimal calculateTotalRate(Quote quote) {
+    public BigDecimal calculateTotalRate(List<Lender> lenders) {
 
-        Optional<BigDecimal> reduce = quote.getLenders().stream().map(lender -> lender.getRate().multiply(lender.getAmount()).divide(BigDecimal.valueOf(12),100, RoundingMode.CEILING)).reduce(BigDecimal::add);
+        Optional<BigDecimal> reduce = lenders.stream().map(lender -> lender.getRate().multiply(lender.getAmount()).divide(BigDecimal.valueOf(12),100, RoundingMode.CEILING)).reduce(BigDecimal::add);
 
         BigDecimal finalRate = reduce.orElseThrow(RuntimeException::new).divide(BigDecimal.valueOf(1000),100, RoundingMode.CEILING).multiply(BigDecimal.valueOf(12));
 

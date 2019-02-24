@@ -2,7 +2,6 @@ package zopa.calculator.service
 
 import spock.lang.Specification
 import zopa.calculator.domain.Lender
-import zopa.calculator.domain.Quote
 import zopa.calculator.service.api.LoanCalculatorService
 import zopa.calculator.service.impl.LoanCalculatorServiceImpl
 
@@ -14,8 +13,6 @@ class LoanCalculatorServiceServiceImplSpec extends Specification {
                           new Lender("Fred", new BigDecimal("0.071"), new BigDecimal("60")),
                           new Lender("Angela", new BigDecimal("0.071"), new BigDecimal("460"))]
 
-    private Quote QUOTE = new Quote(new BigDecimal("1000"), LENDERS)
-
     def setup() {
         loanCalculatorService = new LoanCalculatorServiceImpl()
     }
@@ -25,7 +22,7 @@ class LoanCalculatorServiceServiceImplSpec extends Specification {
         given: "a list of Lenders and a requested amount for a loan quote"
 
         when: "the calculate monthly payment service is called"
-        def monthlyPayment = loanCalculatorService.calculateMonthlyPayment(QUOTE)
+        def monthlyPayment = loanCalculatorService.calculateMonthlyPayment(LENDERS)
 
         then: "the monthly payment amount is returned"
         monthlyPayment == new BigDecimal("30.78")
@@ -34,10 +31,10 @@ class LoanCalculatorServiceServiceImplSpec extends Specification {
 
     def "Total repayment is calculated and returned successfully" () {
         given: "the monthly payment has been calculated"
-        QUOTE.setMonthlyPayment(new BigDecimal("30.78"))
+        def monthlyPayment = new BigDecimal("30.78")
 
         when: "the calculate total repayment service is called"
-        def total = loanCalculatorService.calculateTotalRepayment(QUOTE)
+        def total = loanCalculatorService.calculateTotalRepayment(monthlyPayment)
 
         then: "the total repayment amount is returned"
         total == new BigDecimal("1108.04")
@@ -47,7 +44,7 @@ class LoanCalculatorServiceServiceImplSpec extends Specification {
         given: "a list of Lenders and a requested amount for a loan quote"
 
         when: "the calculate final total rate service is called"
-        def total = loanCalculatorService.calculateTotalRate(QUOTE)
+        def total = loanCalculatorService.calculateTotalRate(LENDERS)
 
         then: "the total final rate is returned"
         total == new BigDecimal("0.07")

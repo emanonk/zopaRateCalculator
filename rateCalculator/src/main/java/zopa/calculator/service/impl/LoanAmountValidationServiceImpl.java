@@ -1,7 +1,7 @@
 package zopa.calculator.service.impl;
 
 import zopa.calculator.error.RequestedAmountError;
-import zopa.calculator.exception.RequestedAmountException;
+import zopa.calculator.exception.RequestedAmountValidationException;
 import zopa.calculator.service.api.LoanAmountValidationService;
 
 import java.math.BigDecimal;
@@ -22,19 +22,19 @@ public class LoanAmountValidationServiceImpl implements LoanAmountValidationServ
         try {
             requestedAmount = new BigDecimal(requestedAmountStr);
         }catch (NumberFormatException nfe) {
-            throw new RequestedAmountException(RequestedAmountError.NUMBER_FORMAT.getErrorMessage());
+            throw new RequestedAmountValidationException(RequestedAmountError.NUMBER_FORMAT.getErrorMessage());
         }
 
         if (requestedAmount.compareTo(MAX_REQUESTED_AMOUNT) > 0) {
-            throw new RequestedAmountException(RequestedAmountError.MAX_AMOUNT.getErrorMessage());
+            throw new RequestedAmountValidationException(RequestedAmountError.MAX_AMOUNT.getErrorMessage());
         }
 
         if(requestedAmount.compareTo(MIN_REQUESTED_AMOUNT) < 0) {
-            throw new RequestedAmountException(RequestedAmountError.MIN_AMOUNT.getErrorMessage());
+            throw new RequestedAmountValidationException(RequestedAmountError.MIN_AMOUNT.getErrorMessage());
         }
 
         if(requestedAmount.remainder(ROUNDED_VALIDATION_AMOUNT).compareTo(BigDecimal.ZERO) != 0){
-            throw new RequestedAmountException(RequestedAmountError.ROUNDED_AMOUNT.getErrorMessage());
+            throw new RequestedAmountValidationException(RequestedAmountError.ROUNDED_AMOUNT.getErrorMessage());
         }
         return requestedAmount;
     }

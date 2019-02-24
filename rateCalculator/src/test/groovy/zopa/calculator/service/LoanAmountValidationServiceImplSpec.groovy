@@ -3,7 +3,8 @@ package zopa.calculator.service
 import spock.lang.Specification
 import spock.lang.Unroll
 import zopa.calculator.error.RequestedAmountError
-import zopa.calculator.exception.RequestedAmountException
+import zopa.calculator.exception.ApplicationException
+import zopa.calculator.exception.RequestedAmountValidationException
 import zopa.calculator.service.impl.LoanAmountValidationServiceImpl
 
 class LoanAmountValidationServiceImplSpec extends Specification {
@@ -35,7 +36,7 @@ class LoanAmountValidationServiceImplSpec extends Specification {
         loanAmountValidationService.convertAndValidateRequestedAmount(amount)
 
         then: "an exception is thrown"
-        def exception = thrown RequestedAmountException
+        def exception = thrown RequestedAmountValidationException
 
         and: "with an appropriate error message"
         exception.getMessage() == errorMessage

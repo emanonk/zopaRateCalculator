@@ -2,7 +2,7 @@ package zopa.calculator.service.impl;
 
 import zopa.calculator.domain.Lender;
 import zopa.calculator.error.RequestedAmountError;
-import zopa.calculator.exception.RequestedAmountException;
+import zopa.calculator.exception.ApplicationException;
 import zopa.calculator.service.api.LenderService;
 
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ public class LenderServiceImpl implements LenderService {
     }
 
     @Override
-    public List<Lender> findLendersWithLowestRates(List<Lender> lenders, BigDecimal requestedAmount) {
+    public List<Lender> findLendersWithLowestRates(List<Lender> lenders, BigDecimal requestedAmount) throws ApplicationException {
 
         Collections.sort(lenders);
 
@@ -35,10 +35,8 @@ public class LenderServiceImpl implements LenderService {
             }
         }
         if(remainingAmount.compareTo(BigDecimal.ZERO) > 0) {
-            throw new RequestedAmountException(RequestedAmountError.NOT_ENOUGH_CAPITAL.getErrorMessage());
+            throw new ApplicationException(RequestedAmountError.NOT_ENOUGH_CAPITAL.getErrorMessage());
         }
-
-
 
         return requiredLenders;
     }

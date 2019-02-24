@@ -3,7 +3,7 @@ package zopa.calculator.service
 import spock.lang.Specification
 import zopa.calculator.domain.Lender
 import zopa.calculator.error.RequestedAmountError
-import zopa.calculator.exception.RequestedAmountException
+import zopa.calculator.exception.ApplicationException
 import zopa.calculator.service.api.LenderService
 import zopa.calculator.service.impl.LenderServiceImpl
 
@@ -52,7 +52,7 @@ class LenderServiceImplSpec extends Specification {
         lenderService.findLendersWithLowestRates(LENDERS, new BigDecimal("14000"))
 
         then: "an exception is thrown to inform that system is not possible to provide a quote"
-        def exception = thrown RequestedAmountException
+        def exception = thrown ApplicationException
 
         and: "with an appropriate message"
         exception.getMessage() == RequestedAmountError.NOT_ENOUGH_CAPITAL.getErrorMessage()
